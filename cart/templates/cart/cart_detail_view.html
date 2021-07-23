@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-{% load statics %}
+{% load static %}
 
 {% block title %}
     Your shopping cart
@@ -28,7 +28,14 @@
                          </a>
                     </td>
                      <td>{{ product.name }}</td>
-                     <td>{{ item.quantity }}</td>
+                     <td>
+                         <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                              {% csrf_token %}
+                              {{ item.update_quantity_form.quantity }}
+                              {{ item.update_quantity_form.override }}
+                               <input type="submit" value="Update">
+                         </form>
+                     </td>
                      <td>
                           <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                                <input type="submit" value="Remove">
