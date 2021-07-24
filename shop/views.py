@@ -15,7 +15,6 @@ class ProductListView(ListView):
         context = super(ProductListView, self).get_context_data(**kwargs)
         category = None
         context['categories'] = Category.objects.all()  # we only want to view available products
-        print("self.kwargs:", self.kwargs)
         products = Product.objects.filter(available=True)
         if 'category_slug' in self.kwargs.keys():
             category = get_object_or_404(Category, slug=self.kwargs['category_slug'])

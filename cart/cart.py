@@ -47,8 +47,9 @@ class Cart:
             self.save()
 
     def get_total_price(self):
-        return sum(Decimal(item['total_price']) for item in self.cart.values())  # mine
-        # return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        # print(self.cart.values())
+        # return sum(Decimal(item['total_price']) for item in self.cart.values())  # Why do I get key error for total_price?
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def save(self):
         self.session.modified = True
