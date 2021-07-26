@@ -14,7 +14,6 @@ class CartAdd(View):
         form = CartAddProductForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            print(self.request.session['cart'])
             cart.add(product, quantity=cd['quantity'], override_quantity=cd['override'])
         return redirect('cart:cart_detail')
 

@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from zeep import Client
 from orders.models import Order
+from orders.tasks import order_created
 
 MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
@@ -24,8 +25,11 @@ def verify(request):
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
         if result.Status == 100:
-            # order =
-            return HttpResponse('Transaction success.\nRefID: ' + str(result.RefID))
+            order = Order.objects.get(id=request.session['order_id'])
+            order.paid = True
+            order.save()
+            order_created.delay(order.id)  # launching asynchronous task
+            return render(request, 'orders/success.html', {'order': order})
         elif result.Status == 101:
             return HttpResponse('Transaction submitted : ' + str(result.Status))
         else:
