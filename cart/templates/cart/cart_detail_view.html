@@ -57,6 +57,10 @@
     </table>
      <p class="text-right">
          <a href="{% url 'shop:product_list' %}" class="buttonlight">Continue shopping</a>
-         <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+         {% with total_items=cart|length %}
+            {% if total_items > 0%}
+                <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+            {% endif %}
+         {% endwith %}
       </p>
 {% endblock %}
