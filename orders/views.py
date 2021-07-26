@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from orders.models import OrderItem
 from orders.forms import OrderCreateForm
@@ -22,4 +22,6 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
                                          quantity=item['quantity'])
             cart.clear()
             order_created.delay(order.id)  # launching asynchronous task
-            return render(request, 'orders/success.html', {'order': order})
+            request.session['order_id'] = order.id
+            return redirect('zarinpal:request')
+            # return render(request, 'orders/success.html', {'order': order})
