@@ -5,7 +5,7 @@ from orders.models import Order
 from orders.tasks import order_created
 
 MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
-client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
+# client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
 amount = 1000  # Toman / Required
 description = "توضیحات خرید شما"  # Required
 email = 'email@example.com'  # Optional
@@ -14,6 +14,7 @@ CallbackURL = 'http://127.0.0.1:8000/payment/verify/'  # Important: need to edit
 
 
 def send_request(request):
+    client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
     result = client.service.PaymentRequest(MERCHANT, amount, description, email, mobile, CallbackURL)
     if result.Status == 100:
         return redirect('https://sandbox.zarinpal.com/pg/StartPay/' + str(result.Authority))
@@ -22,6 +23,7 @@ def send_request(request):
 
 
 def verify(request):
+    client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
         if result.Status == 100:
@@ -33,6 +35,6 @@ def verify(request):
         elif result.Status == 101:
             return HttpResponse('Transaction submitted : ' + str(result.Status))
         else:
-            return HttpResponse('Transaction failed.\nStatus: ' + str(result.Status))
+            return render(request, 'orders/fail.html')
     else:
-        return HttpResponse('Transaction failed or canceled by user')
+        return render(request, 'orders/fail.html')
