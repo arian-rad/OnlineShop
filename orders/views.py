@@ -21,6 +21,5 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
-            print("order:", order)
-            # order_created.delay(order.id)  # launching asynchronous task
+            order_created.delay(order.id)  # launching asynchronous task
             return render(request, 'orders/success.html', {'order': order})
