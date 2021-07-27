@@ -4,7 +4,6 @@ from orders.models import OrderItem
 from orders.forms import OrderCreateForm
 from cart.cart import Cart
 import zarinpal
-# from orders.tasks import order_created
 
 
 class OrderCreateView(View):  # Didn't use CreateView because I was facing multiple models: OrderItem, Order

@@ -13,10 +13,8 @@ class Cart:
 
     def __iter__(self):
         product_ids = self.cart.keys()
-        # print('__iter__(): OK before get')
         # products = Product.objects.get(id__in=product_ids) Why did the book use get?!
         products = Product.objects.filter(id__in=product_ids)
-        # print('__iter__(): OK after get')
 
         cart = self.cart.copy()
         for product in products:
@@ -47,7 +45,6 @@ class Cart:
             self.save()
 
     def get_total_price(self):
-        # print(self.cart.values())
         # return sum(Decimal(item['total_price']) for item in self.cart.values())  # Why do I get key error for total_price?
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
