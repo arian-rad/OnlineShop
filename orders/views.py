@@ -57,7 +57,7 @@ class AdminOrderPDFView(View):
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
         # print('STATICFILES_DIRS:', settings.STATICFILES_DIRS[0])
-        print('STATIC_ROOT:', settings.STATIC_ROOT)
+        # print('STATIC_ROOT:', settings.STATIC_ROOT)
         weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(str(settings.STATICFILES_DIRS[0]) + '/' + 'css/pdf.css')])
         # weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS((settings.STATIC_ROOT) + 'css/pdf.css')])
         return response

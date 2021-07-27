@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from zeep import Client
 from orders.models import Order
 from orders.tasks import order_created
+from .tasks import payment_completed
 
 MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 # client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
@@ -26,15 +27,17 @@ def verify(request):
     client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
+        order = Order.objects.get(id=request.session['order_id'])
         if result.Status == 100:
-            order = Order.objects.get(id=request.session['order_id'])
             order.paid = True
             order.save()
-            order_created.delay(order.id)  # launching asynchronous task
+            # order_created.delay(order.id)  # launching asynchronous task
+            payment_completed.delay(order.id)  # launching asynchronous task: Sending an email
             return render(request, 'orders/success.html', {'order': order})
         elif result.Status == 101:
             return HttpResponse('Transaction submitted : ' + str(result.Status))
         else:
+            order_created.delay(order.id)  # launching asynchronous task
             return render(request, 'orders/fail.html')
     else:
         return render(request, 'orders/fail.html')
