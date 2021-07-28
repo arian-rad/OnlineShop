@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-from django.views.generic import View
-from orders.models import OrderItem
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import View, DetailView, TemplateView
+from orders.models import OrderItem, Order
 from orders.forms import OrderCreateForm
 from cart.cart import Cart
 import zarinpal
-# from orders.tasks import order_created
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 
 
 class OrderCreateView(View):  # Didn't use CreateView because I was facing multiple models: OrderItem, Order
@@ -27,3 +28,13 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
             request.session['order_id'] = order.id
             zarinpal.views.amount = order.get_total_cost()
             return redirect('zarinpal:request')
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class AdminOrderDetailView(TemplateView):
+    template_name = 'orders/admin/order_admin_detail_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AdminOrderDetailView, self).get_context_data(**kwargs)
+        context['order'] = get_object_or_404(Order, id=self.kwargs['order_id'])
+        return context
