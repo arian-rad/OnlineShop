@@ -3,6 +3,7 @@ from shop.models import Product
 from cart.cart import Cart
 from cart.forms import CartAddProductForm
 from django.views.generic import TemplateView, View
+from coupons.forms import CouponApplyForm
 
 
 class CartAdd(View):
@@ -34,6 +35,7 @@ class CartDetailView(TemplateView):  # Didn't inherit from DetailView because th
         context['cart'] = Cart(self.request)
         for item in context['cart']:
             item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'override': True})
+        context['coupon_apply_form'] = CouponApplyForm()
 
         return context
 
