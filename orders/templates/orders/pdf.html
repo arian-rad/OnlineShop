@@ -30,10 +30,27 @@
                         <td class="num">${{ item.get_cost }}</td>
                     </tr>
                 {% endfor %}
+
+                <tr class="num">
+                    <td colspan="3">Coupon</td>
+                    <td class="num">{% if order.coupon %}{{order.coupon}}{% else %}None{% endif %}</td>
+                </tr>
+
+                <tr class="num">
+                    <td colspan="3">Discount</td>
+                    <td class="num">{{order.discount}} %</td>
+                </tr>
+
+                <tr class="num">
+                    <td colspan="3">Total Before Discount</td>
+                    <td class="num">${{ order.get_total_cost_before_discount }}</td>
+                </tr>
+
                 <tr class="total">
-                    <td colspan="3">Total</td>
+                    <td colspan="3">Total After Discount</td>
                     <td class="num">${{ order.get_total_cost }}</td>
                 </tr>
+
             </tbody>
         </table>
         <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
