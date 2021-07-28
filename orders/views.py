@@ -6,6 +6,10 @@ from cart.cart import Cart
 import zarinpal
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import weasyprint
 
 
 class OrderCreateView(View):  # Didn't use CreateView because I was facing multiple models: OrderItem, Order
@@ -38,3 +42,22 @@ class AdminOrderDetailView(TemplateView):
         context = super(AdminOrderDetailView, self).get_context_data(**kwargs)
         context['order'] = get_object_or_404(Order, id=self.kwargs['order_id'])
         return context
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class AdminOrderPDFView(View):
+    """
+    This is the view to generate a PDF invoice for an order.
+    """
+
+    def get(self, request, order_id):
+        # context = super(AdminOrderPDFView, self).get_context_data(**kwargs)
+        order = get_object_or_404(Order, id=order_id)
+        html = render_to_string('orders/pdf.html', {'order': order})
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
+        # print('STATICFILES_DIRS:', settings.STATICFILES_DIRS[0])
+        # print('STATIC_ROOT:', settings.STATIC_ROOT)
+        weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(str(settings.STATICFILES_DIRS[0]) + '/' + 'css/pdf.css')])
+        # weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS((settings.STATIC_ROOT) + 'css/pdf.css')])
+        return response
