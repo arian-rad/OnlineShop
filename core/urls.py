@@ -8,6 +8,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('payment/', include('zarinpal.urls', namespace='zarinpal')),
+    path('coupons/', include('coupons.urls', namespace='coupons')),
     path('shop/', include('shop.urls', namespace='shop')),  # URLs for the app "shop"
 ]
 

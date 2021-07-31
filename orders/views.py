@@ -22,7 +22,11 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
         cart = Cart(request)
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+            if cart.coupon:
+                order.coupon = cart.coupon
+                order.discount = cart.coupon.discount
+            order.save()
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'],
                                          quantity=item['quantity'])
@@ -51,13 +55,9 @@ class AdminOrderPDFView(View):
     """
 
     def get(self, request, order_id):
-        # context = super(AdminOrderPDFView, self).get_context_data(**kwargs)
         order = get_object_or_404(Order, id=order_id)
         html = render_to_string('orders/pdf.html', {'order': order})
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
-        # print('STATICFILES_DIRS:', settings.STATICFILES_DIRS[0])
-        # print('STATIC_ROOT:', settings.STATIC_ROOT)
         weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(str(settings.STATICFILES_DIRS[0]) + '/' + 'css/pdf.css')])
-        # weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS((settings.STATIC_ROOT) + 'css/pdf.css')])
         return response
