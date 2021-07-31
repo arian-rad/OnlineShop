@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'zarinpal',
     'coupons.apps.CouponsConfig',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,17 @@ LANGUAGES = (
     ('en', _('English')),
     ('fa', _('Persian')),
 )
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
 
 LOCALE_PATH = (os.path.join(BASE_DIR, 'locale/'),)
 
