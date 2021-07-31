@@ -16,6 +16,8 @@ CallbackURL = 'http://127.0.0.1:8000/payment/verify/'  # Important: need to edit
 
 def send_request(request):
     client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
+    order = Order.objects.get(id=request.session.get('order_id'))
+    amount = order.get_total_cost()
     result = client.service.PaymentRequest(MERCHANT, amount, description, email, mobile, CallbackURL)
     if result.Status == 100:
         return redirect('https://sandbox.zarinpal.com/pg/StartPay/' + str(result.Authority))
@@ -27,7 +29,7 @@ def verify(request):
     client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
-        order = Order.objects.get(id=request.session['order_id'])
+        order = Order.objects.get(id=request.session.get('order_id'))
         if result.Status == 100:
             order.paid = True
             order.save()
