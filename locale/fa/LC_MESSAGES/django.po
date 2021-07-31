@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 16:47+0430\n"
+"POT-Creation-Date: 2021-07-31 17:41+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,22 +62,47 @@ msgstr "فروشگاه من"
 msgid "Coupon"
 msgstr "کوپن"
 
+#: .\shop\models.py:8 .\shop\models.py:28
+msgid "name"
+msgstr "نام کالا"
+
+#: .\shop\models.py:30
+msgid "category"
+msgstr "دسته بندی"
+
+#: .\shop\models.py:32
+msgid "description"
+msgstr "توضیحات"
+
+#: .\shop\models.py:33
+msgid "price"
+msgstr "قیمت"
+
 #: .\shop\templates\shop\product_detail_view.html:20
 msgid "Add to cart"
 msgstr "اضافه کردن به سبد خرید"
+
+#: .\shop\templates\shop\product_list_view.html:15
+msgid "Category"
+msgstr "دسته بندی"
+
+#: .\shop\templates\shop\product_list_view.html:18
+msgid "All"
+msgstr "همه"
 
 #: .\templates\layouts\base.html:7 .\templates\layouts\base.html:12
 msgid "My shop"
 msgstr "فروشگاه من"
 
-#: .\templates\layouts\base.html:19
+#: .\templates\layouts\base.html:17
+msgid "Language"
+msgstr "زبان"
+
+#: .\templates\layouts\base.html:34
 msgid "Your cart"
 msgstr "سبد خرید شما"
 
-#: .\templates\layouts\base.html:21
-#, python-format
-
-#: .\templates\layouts\base.html:28
+#: .\templates\layouts\base.html:43
 msgid "Your cart is empty."
 msgstr "سبد خرید شما خالی است"
 
