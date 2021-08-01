@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-01 16:15+0430\n"
+"POT-Creation-Date: 2021-08-01 17:47+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: .\cart\forms.py:9 .\cart\templates\cart\cart_detail_view.html:16
-msgid "Quantity"
-msgstr "تعداد"
-
-#: .\cart\templates\cart\cart_detail_view.html:6
-msgid "Your shopping cart"
-msgstr "سبد خرید شما"
-
-#: .\cart\templates\cart\cart_detail_view.html:14
-msgid "Image"
-msgstr "عکس"
-
-#: .\cart\templates\cart\cart_detail_view.html:15
-msgid "Product"
-msgstr "محصول"
-
-#: .\cart\templates\cart\cart_detail_view.html:17
-msgid "Remove"
-msgstr "حذف"
-
-#: .\cart\templates\cart\cart_detail_view.html:18
-msgid "Unit price"
-msgstr "قیمت واحد"
-
-#: .\cart\templates\cart\cart_detail_view.html:19
-msgid "Price"
-msgstr "قیمت"
 
 #: .\core\settings.py:112
 msgid "English"
@@ -78,89 +50,19 @@ msgstr "کوپن"
 msgid "shop/"
 msgstr "فروشگاه/"
 
-#: .\coupons\forms.py:6
-msgid "Coupon"
-msgstr "کوپن"
-
-#: .\orders\models.py:10
-msgid "first name"
-msgstr "نام"
-
-#: .\orders\models.py:11
-msgid "last name"
-msgstr "نام خانوادگی"
-
-#: .\orders\models.py:12
-msgid "e-mail"
-msgstr "ایمیل"
-
-#: .\orders\models.py:13
-msgid "address"
-msgstr "آدرس"
-
-#: .\orders\models.py:14
-msgid "postal code"
-msgstr "کد پستی"
-
-#: .\orders\models.py:15
-msgid "city"
-msgstr "شهر"
-
-#: .\orders\templates\orders\order_create_view.html:5
-#: .\orders\templates\orders\order_create_view.html:9
-msgid "Checkout"
-msgstr "بررسی خرید"
-
-#: .\orders\templates\orders\order_create_view.html:11
-msgid "Your order"
-msgstr "سفارش شما"
-
-#: .\orders\templates\orders\order_create_view.html:29
-msgid "Total"
-msgstr "جمع کل"
-
-#: .\orders\templates\orders\order_create_view.html:35
-msgid "Place order"
-msgstr "ثبت سفارش"
-
-#: .\orders\urls.py:8
-msgid "create/"
-msgstr ""
-
-#: .\shop\models.py:37
-msgid "category"
-msgstr ""
-
-#: .\shop\templates\shop\product_detail_view.html:20
-msgid "Add to cart"
-msgstr "اضافه کردن به سبد خرید"
-
-#: .\shop\templates\shop\product_list_view.html:9
-#: .\shop\templates\shop\product_list_view.html:29
-msgid "Products"
-msgstr "محصولات"
-
-#: .\shop\templates\shop\product_list_view.html:15
-msgid "Category"
-msgstr "دسته بندی"
-
-#: .\shop\templates\shop\product_list_view.html:18
-msgid "All"
-msgstr "همه"
-
-#: .\templates\layouts\base.html:7 .\templates\layouts\base.html:12
+#: .\templates\layouts\base.html:9 .\templates\layouts\base.html:15
 msgid "My shop"
 msgstr "فروشگاه من"
 
-#: .\templates\layouts\base.html:17
+#: .\templates\layouts\base.html:20
 msgid "Language"
 msgstr "زبان"
 
-#: .\templates\layouts\base.html:34
+#: .\templates\layouts\base.html:37
 msgid "Your cart"
 msgstr "سبد خرید شما"
 
-#: .\templates\layouts\base.html:36
+#: .\templates\layouts\base.html:39
 #, python-format
 msgid ""
 "\n"
@@ -173,6 +75,72 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\layouts\base.html:43
+#: .\templates\layouts\base.html:46
 msgid "Your cart is empty."
 msgstr "سبد خرید شما خالی است"
+
+#~ msgid "Add to cart"
+#~ msgstr "اضافه کردن به سبد خرید"
+
+#~ msgid "Products"
+#~ msgstr "محصولات"
+
+#~ msgid "Category"
+#~ msgstr "دسته بندی"
+
+#~ msgid "All"
+#~ msgstr "همه"
+
+#~ msgid "first name"
+#~ msgstr "نام"
+
+#~ msgid "last name"
+#~ msgstr "نام خانوادگی"
+
+#~ msgid "e-mail"
+#~ msgstr "ایمیل"
+
+#~ msgid "address"
+#~ msgstr "آدرس"
+
+#~ msgid "postal code"
+#~ msgstr "کد پستی"
+
+#~ msgid "city"
+#~ msgstr "شهر"
+
+#~ msgid "Checkout"
+#~ msgstr "بررسی خرید"
+
+#~ msgid "Your order"
+#~ msgstr "سفارش شما"
+
+#~ msgid "Total"
+#~ msgstr "جمع کل"
+
+#~ msgid "Place order"
+#~ msgstr "ثبت سفارش"
+
+#~ msgid "Coupon"
+#~ msgstr "کوپن"
+
+#~ msgid "Quantity"
+#~ msgstr "تعداد"
+
+#~ msgid "Your shopping cart"
+#~ msgstr "سبد خرید شما"
+
+#~ msgid "Image"
+#~ msgstr "عکس"
+
+#~ msgid "Product"
+#~ msgstr "محصول"
+
+#~ msgid "Remove"
+#~ msgstr "حذف"
+
+#~ msgid "Unit price"
+#~ msgstr "قیمت واحد"
+
+#~ msgid "Price"
+#~ msgstr "قیمت"

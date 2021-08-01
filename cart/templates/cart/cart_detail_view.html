@@ -7,7 +7,7 @@
 {%  endblock  %}
 
 {% block content %}
-    <h1>Your shopping cart</h1>
+    <h1>{% trans "Your shopping cart" %}</h1>
     <table class="cart">
          <thead>
             <tr>
@@ -34,12 +34,12 @@
                               {% csrf_token %}
                               {{ item.update_quantity_form.quantity }}
                               {{ item.update_quantity_form.override }}
-                               <input type="submit" value="Update">
+                               <input type="submit" value="{% trans 'Update' %}">
                          </form>
                      </td>
                      <td>
                           <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                               <input type="submit" value="Remove">
+                               <input type="submit" value="{% trans 'Remove' %}">
                                 {% csrf_token %}
                           </form>
                      </td>
@@ -63,25 +63,25 @@
             </tr>
          {% endif %}
          <tr class="total">
-              <td>Total</td>
+              <td>{% trans "Total" %}</td>
               <td colspan="4"></td>
               <td class="num">${{ cart.get_total_price_after_discount | floatformat:2 }}</td>
          </tr>
          </tbody>
     </table>
 
-    <p>Apply a coupon:</p>
+    <p>{% trans "Apply a coupon" %} </p>
     <form action="{% url 'coupons:apply' %}" method="post">
         {% csrf_token %}
         {{ coupon_apply_form }}
-        <input type="submit" value="Apply">
+        <input type="submit" value="{% trans 'Apply' %}">
     </form>
 
      <p class="text-right">
-         <a href="{% url 'shop:product_list' %}" class="buttonlight">Continue shopping</a>
+         <a href="{% url 'shop:product_list' %}" class="buttonlight">{% trans "Continue shopping" %}</a>
          {% with total_items=cart|length %}
             {% if total_items > 0%}
-                <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+                <a href="{% url 'orders:order_create' %}" class="button">{%trans "Checkout" %}</a>
             {% endif %}
          {% endwith %}
       </p>
