@@ -1,5 +1,5 @@
-from django.shortcuts import render,  get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView
 from shop.models import Product, Category
 from cart.forms import CartAddProductForm
 from parler.views import TranslatableSlugMixin
@@ -11,7 +11,6 @@ class ProductListView(ListView):
     """
     model = Product
     template_name = 'shop/product_list_view.html'
-    # slug_url_kwarg = 'category_slug'
 
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
@@ -19,7 +18,9 @@ class ProductListView(ListView):
         context['categories'] = Category.objects.all()  # we only want to view available products
         products = Product.objects.filter(available=True)
         if 'category_slug' in self.kwargs.keys():
-            category = get_object_or_404(Category, translations__slug=self.kwargs['category_slug'])
+            language = self.request.LANGUAGE_CODE
+            category = get_object_or_404(Category, translations__slug=self.kwargs['category_slug'],
+                                         translations__language_code=language)
             products = products.filter(category=category)
         context['category'] = category
         context['products'] = products
@@ -29,12 +30,14 @@ class ProductListView(ListView):
 class ProductDetailView(TranslatableSlugMixin, DetailView):
     model = Product
     template_name = 'shop/product_detail_view.html'
-    slug_url_kwarg = 'product_slug'
 
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
-        print(self.kwargs)
-        context['product'] = get_object_or_404(Product, id=self.kwargs['id'], translations__slug=self.kwargs['product_slug'], available=True)
+        language = self.request.LANGUAGE_CODE
+        context['product'] = get_object_or_404(
+            Product, id=self.kwargs['id'], translations__slug=self.kwargs['slug'],
+            translations__language_code=language, available=True)
+
         context['cart_product_form'] = CartAddProductForm()
         return context
 

@@ -65,15 +65,11 @@ msgstr "سبد خرید شما"
 #: .\templates\layouts\base.html:39
 #, python-format
 msgid ""
-"\n"
-"                                  %(items)s item, $%(total)s\n"
-"                                  "
+"%(items)s item, $%(total)s"
 msgid_plural ""
-"\n"
-"                                  %(items)s items, $%(total)s\n"
-"                              "
-msgstr[0] ""
-msgstr[1] ""
+"%(items)s items, $%(total)s"
+msgstr[0] "%(items)s کالا $%(total)s"
+msgstr[1] "%(items)s کالا $%(total)s"
 
 #: .\templates\layouts\base.html:46
 msgid "Your cart is empty."
