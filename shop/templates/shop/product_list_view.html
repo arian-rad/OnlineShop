@@ -6,7 +6,7 @@
     {% if category %}
         {{ category.name }}
     {% else %}
-        Products
+        {% trans "Products" %}
     {% endif %}
 {% endblock %}
 
@@ -26,7 +26,7 @@
     </div>
 
 <div id="main" class="product-list">
-    <h1>{% if category %}{{ category.name }}{% else %}Products {% endif %}</h1>
+    <h1>{% if category %}{{ category.name }}{% else %}{% trans "Products" %}{% endif %}</h1>
     {% for product in products %}
     <div class="item">
          <a href="{{ product.get_absolute_url }}">

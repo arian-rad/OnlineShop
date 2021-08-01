@@ -116,7 +116,7 @@ LANGUAGES = (
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en'},
-        {'code': 'es'},
+        {'code': 'fa'},
     ),
     'default': {
         'fallback': 'en',

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 17:41+0430\n"
+"POT-Creation-Date: 2021-08-01 10:16+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Quantity"
 msgstr "تعداد"
 
-#: .\core\settings.py:111
+#: .\core\settings.py:112
 msgid "English"
 msgstr "انگلیسی"
 
-#: .\core\settings.py:112
+#: .\core\settings.py:113
 msgid "Persian"
 msgstr "فارسی"
 
@@ -47,16 +47,12 @@ msgid "payment/"
 msgstr "پرداخت"
 
 #: .\core\urls.py:13
-#, fuzzy
-#| msgid "Coupon"
 msgid "coupons/"
-msgstr "کوپن"
+msgstr "کوپن/"
 
 #: .\core\urls.py:14
-#, fuzzy
-#| msgid "My shop"
 msgid "shop/"
-msgstr "فروشگاه من"
+msgstr "فروشگاه من/"
 
 #: .\coupons\forms.py:6
 msgid "Coupon"
@@ -82,6 +78,11 @@ msgstr "قیمت"
 msgid "Add to cart"
 msgstr "اضافه کردن به سبد خرید"
 
+#: .\shop\templates\shop\product_list_view.html:9
+#: .\shop\templates\shop\product_list_view.html:29
+msgid "Products"
+msgstr "محصولات"
+
 #: .\shop\templates\shop\product_list_view.html:15
 msgid "Category"
 msgstr "دسته بندی"
@@ -105,9 +106,3 @@ msgstr "سبد خرید شما"
 #: .\templates\layouts\base.html:43
 msgid "Your cart is empty."
 msgstr "سبد خرید شما خالی است"
-
-#, python-format
-#~ msgid "item"
-#~ msgid_plural "items"
-#~ msgstr[0] "کالا"
-#~ msgstr[1] "کالاها"
