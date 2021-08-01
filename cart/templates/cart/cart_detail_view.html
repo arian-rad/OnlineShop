@@ -1,8 +1,9 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block title %}
-    Your shopping cart
+    {% trans "Your shopping cart" %}
 {%  endblock  %}
 
 {% block content %}
@@ -10,12 +11,12 @@
     <table class="cart">
          <thead>
             <tr>
-                 <th>Image</th>
-                 <th>Product</th>
-                 <th>Quantity</th>
-                 <th>Remove</th>
-                 <th>Unit price</th>
-                  <th>Price</th>
+                 <th>{% trans "Image" %}</th>
+                 <th>{% trans "Product" %}</th>
+                 <th>{% trans "Quantity" %}</th>
+                 <th>{% trans "Remove" %}</th>
+                 <th>{% trans "Unit price" %}</th>
+                  <th>{% trans "Price" %}</th>
             </tr>
          </thead>
          <tbody>

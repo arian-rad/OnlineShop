@@ -10,15 +10,15 @@ class ProductAdmin(TranslatableAdmin):
     list_editable = ('price', 'available')
     # prepopulated_fields = {'slug': ('name',)}
 
-    def get_prepopulated_fields(self, request, obj=None):
-        return {'slug': ('name',)}
+    # def get_prepopulated_fields(self, request, obj=None):
+    #     return {'slug': ('name',)}
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslatableAdmin):
     list_display = ('name', 'slug')
     # prepopulated_fields = {'slug': ('name',)}
 
-    def get_prepopulated_fields(self, request, obj=None):
-        return {'slug': ('name',)}
+    # def get_prepopulated_fields(self, request, obj=None):
+    #     return {'slug': ('name',)}
 

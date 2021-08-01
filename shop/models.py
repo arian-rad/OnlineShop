@@ -41,7 +41,8 @@ class Product(TranslatableModel):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    # class Meta:
+    class Meta:
+        verbose_name = 'product'
     #     ordering = ('name',)
     #     index_together = (('id', 'slug'),)
 

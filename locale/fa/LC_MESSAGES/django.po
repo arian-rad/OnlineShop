@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-01 10:16+0430\n"
+"POT-Creation-Date: 2021-08-01 16:15+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\cart\forms.py:9
+#: .\cart\forms.py:9 .\cart\templates\cart\cart_detail_view.html:16
 msgid "Quantity"
 msgstr "تعداد"
+
+#: .\cart\templates\cart\cart_detail_view.html:6
+msgid "Your shopping cart"
+msgstr "سبد خرید شما"
+
+#: .\cart\templates\cart\cart_detail_view.html:14
+msgid "Image"
+msgstr "عکس"
+
+#: .\cart\templates\cart\cart_detail_view.html:15
+msgid "Product"
+msgstr "محصول"
+
+#: .\cart\templates\cart\cart_detail_view.html:17
+msgid "Remove"
+msgstr "حذف"
+
+#: .\cart\templates\cart\cart_detail_view.html:18
+msgid "Unit price"
+msgstr "قیمت واحد"
+
+#: .\cart\templates\cart\cart_detail_view.html:19
+msgid "Price"
+msgstr "قیمت"
 
 #: .\core\settings.py:112
 msgid "English"
@@ -32,47 +56,80 @@ msgstr "فارسی"
 
 #: .\core\urls.py:9
 msgid "admin/"
-msgstr "پنل ادمین"
+msgstr "پنل ادمین/"
 
 #: .\core\urls.py:10
 msgid "cart/"
-msgstr "سبد خری"
+msgstr "سبدخرید/"
 
 #: .\core\urls.py:11
 msgid "orders/"
-msgstr "سفارش ها"
+msgstr "سفارشات/"
 
 #: .\core\urls.py:12
 msgid "payment/"
-msgstr "پرداخت"
+msgstr "پرداخت/"
 
 #: .\core\urls.py:13
 msgid "coupons/"
-msgstr "کوپن/"
+msgstr "کوپن"
 
 #: .\core\urls.py:14
 msgid "shop/"
-msgstr "فروشگاه من/"
+msgstr "فروشگاه/"
 
 #: .\coupons\forms.py:6
 msgid "Coupon"
 msgstr "کوپن"
 
-#: .\shop\models.py:8 .\shop\models.py:28
-msgid "name"
-msgstr "نام کالا"
+#: .\orders\models.py:10
+msgid "first name"
+msgstr "نام"
 
-#: .\shop\models.py:30
+#: .\orders\models.py:11
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: .\orders\models.py:12
+msgid "e-mail"
+msgstr "ایمیل"
+
+#: .\orders\models.py:13
+msgid "address"
+msgstr "آدرس"
+
+#: .\orders\models.py:14
+msgid "postal code"
+msgstr "کد پستی"
+
+#: .\orders\models.py:15
+msgid "city"
+msgstr "شهر"
+
+#: .\orders\templates\orders\order_create_view.html:5
+#: .\orders\templates\orders\order_create_view.html:9
+msgid "Checkout"
+msgstr "بررسی خرید"
+
+#: .\orders\templates\orders\order_create_view.html:11
+msgid "Your order"
+msgstr "سفارش شما"
+
+#: .\orders\templates\orders\order_create_view.html:29
+msgid "Total"
+msgstr "جمع کل"
+
+#: .\orders\templates\orders\order_create_view.html:35
+msgid "Place order"
+msgstr "ثبت سفارش"
+
+#: .\orders\urls.py:8
+msgid "create/"
+msgstr ""
+
+#: .\shop\models.py:37
 msgid "category"
-msgstr "دسته بندی"
-
-#: .\shop\models.py:32
-msgid "description"
-msgstr "توضیحات"
-
-#: .\shop\models.py:33
-msgid "price"
-msgstr "قیمت"
+msgstr ""
 
 #: .\shop\templates\shop\product_detail_view.html:20
 msgid "Add to cart"
@@ -102,6 +159,19 @@ msgstr "زبان"
 #: .\templates\layouts\base.html:34
 msgid "Your cart"
 msgstr "سبد خرید شما"
+
+#: .\templates\layouts\base.html:36
+#, python-format
+msgid ""
+"\n"
+"                                  %(items)s item, $%(total)s\n"
+"                                  "
+msgid_plural ""
+"\n"
+"                                  %(items)s items, $%(total)s\n"
+"                              "
+msgstr[0] ""
+msgstr[1] ""
 
 #: .\templates\layouts\base.html:43
 msgid "Your cart is empty."

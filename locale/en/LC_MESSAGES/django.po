@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-01 10:16+0430\n"
+"POT-Creation-Date: 2021-08-01 16:15+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\cart\forms.py:9
+#: .\cart\forms.py:9 .\cart\templates\cart\cart_detail_view.html:16
 msgid "Quantity"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:6
+msgid "Your shopping cart"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:14
+msgid "Image"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:15
+msgid "Product"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:17
+msgid "Remove"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:18
+msgid "Unit price"
+msgstr ""
+
+#: .\cart\templates\cart\cart_detail_view.html:19
+msgid "Price"
 msgstr ""
 
 #: .\core\settings.py:112
@@ -58,20 +82,53 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: .\shop\models.py:8 .\shop\models.py:28
-msgid "name"
+#: .\orders\models.py:10
+msgid "first name"
 msgstr ""
 
-#: .\shop\models.py:30
+#: .\orders\models.py:11
+msgid "last name"
+msgstr ""
+
+#: .\orders\models.py:12
+msgid "e-mail"
+msgstr ""
+
+#: .\orders\models.py:13
+msgid "address"
+msgstr ""
+
+#: .\orders\models.py:14
+msgid "postal code"
+msgstr ""
+
+#: .\orders\models.py:15
+msgid "city"
+msgstr ""
+
+#: .\orders\templates\orders\order_create_view.html:5
+#: .\orders\templates\orders\order_create_view.html:9
+msgid "Checkout"
+msgstr ""
+
+#: .\orders\templates\orders\order_create_view.html:11
+msgid "Your order"
+msgstr ""
+
+#: .\orders\templates\orders\order_create_view.html:29
+msgid "Total"
+msgstr ""
+
+#: .\orders\templates\orders\order_create_view.html:35
+msgid "Place order"
+msgstr ""
+
+#: .\orders\urls.py:8
+msgid "create/"
+msgstr ""
+
+#: .\shop\models.py:37
 msgid "category"
-msgstr ""
-
-#: .\shop\models.py:32
-msgid "description"
-msgstr ""
-
-#: .\shop\models.py:33
-msgid "price"
 msgstr ""
 
 #: .\shop\templates\shop\product_detail_view.html:20
