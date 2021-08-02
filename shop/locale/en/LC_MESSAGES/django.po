@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-02 12:50+0430\n"
+"POT-Creation-Date: 2021-08-02 13:44+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,10 @@ msgstr ""
 
 #: .\shop\templates\shop\product_detail_view.html:20
 msgid "Add to cart"
+msgstr ""
+
+#: .\shop\templates\shop\product_detail_view.html:26
+msgid "You might also like"
 msgstr ""
 
 #: .\shop\templates\shop\product_list_view.html:9

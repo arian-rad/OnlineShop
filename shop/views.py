@@ -41,6 +41,7 @@ class ProductDetailView(TranslatableSlugMixin, DetailView):
 
         context['cart_product_form'] = CartAddProductForm()
         r = Recommender()
+        r.products_bought([context['product']])
         context['recommended_products'] = r.suggest_products_for([context['product']], 4)
 
         return context
