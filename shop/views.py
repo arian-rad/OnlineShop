@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 from shop.models import Product, Category
 from cart.forms import CartAddProductForm
 from parler.views import TranslatableSlugMixin
+from .recommender import Recommender
 
 
 class ProductListView(ListView):
@@ -39,5 +40,8 @@ class ProductDetailView(TranslatableSlugMixin, DetailView):
             translations__language_code=language, available=True)
 
         context['cart_product_form'] = CartAddProductForm()
+        r = Recommender()
+        context['recommended_products'] = r.suggest_products_for([context['product']], 4)
+
         return context
 
