@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from shop.models import Product, Category
 from cart.forms import CartAddProductForm
-from parler.views import TranslatableSlugMixin
 from .recommender import Recommender
 
 
@@ -20,15 +19,17 @@ class ProductListView(ListView):
         products = Product.objects.filter(available=True)
         if 'category_slug' in self.kwargs.keys():
             language = self.request.LANGUAGE_CODE
-            category = get_object_or_404(Category, translations__slug=self.kwargs['category_slug'],
+            category = get_object_or_404(Category, slug=self.kwargs['category_slug'],
                                          translations__language_code=language)
+            # category = get_object_or_404(Category, translations__slug=self.kwargs['category_slug'],
+            #                              translations__language_code=language)
             products = products.filter(category=category)
         context['category'] = category
         context['products'] = products
         return context
 
 
-class ProductDetailView(TranslatableSlugMixin, DetailView):
+class ProductDetailView(DetailView):
     model = Product
     template_name = 'shop/product_detail_view.html'
 
@@ -36,13 +37,13 @@ class ProductDetailView(TranslatableSlugMixin, DetailView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         language = self.request.LANGUAGE_CODE
         context['product'] = get_object_or_404(
-            Product, id=self.kwargs['id'], translations__slug=self.kwargs['slug'],
+            Product, id=self.kwargs['id'], slug=self.kwargs['slug'],
             translations__language_code=language, available=True)
+            # Product, id=self.kwargs['id'], translations__slug=self.kwargs['slug'],
+            # translations__language_code=language, available=True)
 
         context['cart_product_form'] = CartAddProductForm()
         r = Recommender()
-        # r.products_bought([context['product']])
         context['recommended_products'] = r.suggest_products_for([context['product']], 3)
 
         return context
-
