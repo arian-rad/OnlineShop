@@ -10,6 +10,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 import weasyprint
+from shop.recommender import Recommender
 
 
 class OrderCreateView(View):  # Didn't use CreateView because I was facing multiple models: OrderItem, Order
@@ -27,9 +28,13 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
             order.save()
+            p = []
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'],
                                          quantity=item['quantity'])
+                p.append(item['product'])
+            r = Recommender()
+            r.products_bought(p)
             cart.clear()
             # order_created.delay(order.id) Moved this line to zarinpal\views.py
             # because email must be sent after payment verification
