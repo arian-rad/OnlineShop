@@ -5,6 +5,6 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', ProductListView.as_view(), name='product_list'),  # adding this in case no category was selected
-    path('<slug:category_slug>/', ProductListView.as_view(), name='product_list_by_category'),
-    path('<int:id>/<slug:slug>/', ProductDetailView.as_view(), name='product_detail'),
+    path('<str:category_slug>/', ProductListView.as_view(), name='product_list_by_category'),
+    path('<int:id>/<str:slug>/', ProductDetailView.as_view(), name='product_detail'),
 ]

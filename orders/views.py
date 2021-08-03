@@ -34,7 +34,7 @@ class OrderCreateView(View):  # Didn't use CreateView because I was facing multi
             # order_created.delay(order.id) Moved this line to zarinpal\views.py
             # because email must be sent after payment verification
             request.session['order_id'] = order.id
-            zarinpal.views.amount = order.get_total_cost()
+            # zarinpal.views.amount = order.get_total_cost()
             return redirect('zarinpal:request')
 
 

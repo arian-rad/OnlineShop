@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-01 17:47+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\core\settings.py:112
+msgid "English"
+msgstr ""
+
+#: .\core\settings.py:113
+msgid "Persian"
+msgstr ""
+
+#: .\core\urls.py:9
+msgid "admin/"
+msgstr ""
+
+#: .\core\urls.py:10
+msgid "cart/"
+msgstr ""
+
+#: .\core\urls.py:11
+msgid "orders/"
+msgstr ""
+
+#: .\core\urls.py:12
+msgid "payment/"
+msgstr ""
+
+#: .\core\urls.py:13
+msgid "coupons/"
+msgstr ""
+
+#: .\core\urls.py:14
+msgid "shop/"
+msgstr ""
+
+#: .\templates\layouts\base.html:9 .\templates\layouts\base.html:15
+msgid "My shop"
+msgstr ""
+
+#: .\templates\layouts\base.html:20
+msgid "Language"
+msgstr ""
+
+#: .\templates\layouts\base.html:37
+msgid "Your cart"
+msgstr ""
+
+#: .\templates\layouts\base.html:39
+#, python-format
+msgid ""
+"\n"
+"                                  %(items)s item, $%(total)s\n"
+"                                  "
+msgid_plural ""
+"\n"
+"                                  %(items)s items, $%(total)s\n"
+"                              "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\layouts\base.html:46
+msgid "Your cart is empty."
+msgstr ""
